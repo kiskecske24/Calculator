@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="calulator.MainPage">
+
+
+
+
+    <StackLayout Orientation="Vertical">
+        <StackLayout Orientation="Horizontal">
+            <Label x:Name="isdegreelabel" Text="Rad" HeightRequest="100"  WidthRequest="100" VerticalOptions="Start"  FontSize="40" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="lightgrey" BackgroundColor="Black"/>
+            <Label x:Name="calculatorlabel" Text="" HeightRequest="100"  WidthRequest="1820" FontSize="40" VerticalOptions="End"  VerticalTextAlignment="Center" HorizontalTextAlignment="End" TextColor="lightgrey" BackgroundColor="Black"/>   
+        </StackLayout>
+        <Label x:Name="testlabel" Text="" HeightRequest="100" FontSize="40" VerticalTextAlignment="Center"  HorizontalTextAlignment="End" TextColor="lightgrey" BackgroundColor="black"/>  
+        <Grid x:Name="Basicpage" Background="Black" IsVisible="true">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="120"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row = "0" Grid.Column =  "0" BackgroundColor="grey" Text="Functions" FontSize="30" CornerRadius="30" Margin="5" Clicked="FunctionsButtonClicked"/>
+            <Button Grid.Row = "0" Grid.Column =  "1" BackgroundColor="grey" Text="C" FontSize="50" CornerRadius="30" Margin="5" Clicked="DeleteButtonClicked"/>
+            <Button Grid.Row = "0" Grid.Column =  "2" BackgroundColor="grey" Text="%" FontSize="50" CornerRadius="30" Margin="5" Clicked="PercentageButtonClicked"/>
+            <Button Grid.Row = "0" Grid.Column =  "3" BackgroundColor="grey" Text='DEL' FontSize="40" CornerRadius="30" Margin="5" Clicked="BackspaceButtonClicked"/>
+            <Button Grid.Row = "1" Grid.Column =  "0" BackgroundColor="grey" Text="+/-" FontSize="30" CornerRadius="30" Margin="5" Clicked="PlusMinusButtonClicked"/>
+            <Button Grid.Row = "1" Grid.Column =  "1" BackgroundColor="grey" Text="(" FontSize="50" CornerRadius="30" Margin="5" Clicked="StartBracketsButtonClicked"/>
+            <Button Grid.Row = "1" Grid.Column =  "2" BackgroundColor="grey" Text=")" FontSize="50" CornerRadius="30" Margin="5" Clicked="EndBracketsButtonClicked"/>
+            <Button Grid.Row = "1" Grid.Column =  "3" BackgroundColor="grey" Text="/" FontSize="50" CornerRadius="30" Margin="5" Clicked="DivideButtonClicked"/>
+            <Button Grid.Row = "2" Grid.Column =  "0" BackgroundColor="grey" Text="7" FontSize="50" CornerRadius="30" Margin="5" Clicked="Button7Clicked"/>
+            <Button Grid.Row = "2" Grid.Column =  "1" BackgroundColor="grey" Text="8" FontSize="50" CornerRadius="30" Margin="5" Clicked="Button8Clicked"/>
+            <Button Grid.Row = "2" Grid.Column =  "2" BackgroundColor="grey" Text="9" FontSize="50" CornerRadius="30" Margin="5" Clicked="Button9Clicked"/>
+            <Button Grid.Row = "2" Grid.Column =  "3" BackgroundColor="grey" Text="*" FontSize="50" CornerRadius="30" Margin="5" Clicked="TimesButtonClicked"/>
+            <Button Grid.Row = "3" Grid.Column =  "0" BackgroundColor="grey" Text="4" FontSize="50" CornerRadius="30" Margin="5" Clicked="Button4Clicked"/>
+            <Button Grid.Row = "3" Grid.Column =  "1" BackgroundColor="grey" Text="5" FontSize="50" CornerRadius="30" Margin="5" Clicked="Button5Clicked"/>
+            <Button Grid.Row = "3" Grid.Column =  "2" BackgroundColor="grey" Text="6" FontSize="50" CornerRadius="30" Margin="5" Clicked="Button6Clicked"/>
+            <Button Grid.Row = "3" Grid.Column =  "3" BackgroundColor="grey" Text="-" FontSize="50" CornerRadius="30" Margin="5" Clicked="MinusButtonClicked"/>
+            <Button Grid.Row = "4" Grid.Column =  "0" BackgroundColor="grey" Text="1" FontSize="50" CornerRadius="30" Margin="5" Clicked="Button1Clicked"/>
+            <Button Grid.Row = "4" Grid.Column =  "1" BackgroundColor="grey" Text="2" FontSize="50" CornerRadius="30" Margin="5" Clicked="Button2Clicked"/>
+            <Button Grid.Row = "4" Grid.Column =  "2" BackgroundColor="grey" Text="3" FontSize="50" CornerRadius="30" Margin="5" Clicked="Button3Clicked"/>
+            <Button Grid.Row = "4" Grid.Column =  "3" BackgroundColor="grey" Text="+" FontSize="50" CornerRadius="30" Margin="5" Clicked="PlusButtonClicked"/>
+            <Button Grid.Row = "5" Grid.Column =  "0" Grid.ColumnSpan="2" BackgroundColor="grey" Text="0" FontSize="50" CornerRadius="30" Margin="5" Clicked="Button0Clicked"/>
+            <Button Grid.Row = "5" Grid.Column =  "2" BackgroundColor="grey" Text="." FontSize="50" CornerRadius="30" Margin="5" Clicked="CommaButtonClicked"/>
+            <Button Grid.Row = "5" Grid.Column =  "3" BackgroundColor="grey" Text="=" FontSize="50" CornerRadius="30" Margin="5" Clicked="EqualsButtonClicked"/>
+            
+        </Grid>
+       
+        <Grid x:Name="Functionspage" Background="Black" IsVisible="false">
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="120"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row = "0" Grid.Column =  "0" BackgroundColor="grey" Text="Functions" FontSize="30" CornerRadius="30" Margin="5" Clicked="FunctionsButtonClicked"/>
+            <Button Grid.Row = "0" Grid.Column =  "1" BackgroundColor="grey" Text="C" FontSize="50" CornerRadius="30" Margin="5" Clicked="DeleteButtonClicked"/>
+            <Button Grid.Row = "0" Grid.Column =  "2" BackgroundColor="grey" Text="Primegen" FontSize="50" CornerRadius="30" Margin="5" Clicked="PrimeGenClicked"/>
+            <Button Grid.Row = "0" Grid.Column =  "3" BackgroundColor="grey" Text='DEL' FontSize="40" CornerRadius="30" Margin="5" Clicked="BackspaceButtonClicked"/>
+            <Button Grid.Row = "1" Grid.Column =  "0" BackgroundColor="Grey" Text="Cos" FontSize="50" CornerRadius="30" Margin="5" Clicked="CosineButtonClicked"/>
+            <Button Grid.Row = "1" Grid.Column =  "1" BackgroundColor="grey" Text="(" FontSize="50" CornerRadius="30" Margin="5" Clicked="StartBracketsButtonClicked"/>
+            <Button Grid.Row = "1" Grid.Column =  "2" BackgroundColor="grey" Text=")" FontSize="50" CornerRadius="30" Margin="5" Clicked="EndBracketsButtonClicked"/>
+            <Button Grid.Row = "1" Grid.Column =  "3" BackgroundColor="grey" Text="/" FontSize="50" CornerRadius="30" Margin="5" Clicked="DivideButtonClicked"/>
+            <Button Grid.Row = "2" Grid.Column =  "0" BackgroundColor="grey" Text="Sin" FontSize="50" CornerRadius="30" Margin="5" Clicked="SinusButtonClicked"/>
+            <Button Grid.Row = "2" Grid.Column =  "1" BackgroundColor="grey" Text="x^2" FontSize="50" CornerRadius="30" Margin="5" Clicked="SquaredButtonClicked"/>
+            <Button Grid.Row = "2" Grid.Column =  "2" BackgroundColor="grey" Text="Deg/Rad" FontSize="50" CornerRadius="30" Margin="5" Clicked="ToDegrees"/>
+            <Button Grid.Row = "2" Grid.Column =  "3" BackgroundColor="grey" Text="*" FontSize="50" CornerRadius="30" Margin="5" Clicked="TimesButtonClicked"/>
+            <Button Grid.Row = "3" Grid.Column =  "0" BackgroundColor="grey" Text="Tan" FontSize="50" CornerRadius="30" Margin="5" Clicked="TangentButtonClicked"/>
+            <Button Grid.Row = "3" Grid.Column =  "1" BackgroundColor="grey" Text="x^n" FontSize="50" CornerRadius="30" Margin="5" Clicked="XtotheNClicked"/>
+            <Button Grid.Row = "3" Grid.Column =  "2" BackgroundColor="grey" Text="equ" FontSize="50" CornerRadius="30" Margin="5" Clicked="equationmethod"/>
+            <Button Grid.Row = "3" Grid.Column =  "3" BackgroundColor="grey" Text="-" FontSize="50" CornerRadius="30" Margin="5" Clicked="MinusButtonClicked"/>
+            <Button Grid.Row = "4" Grid.Column =  "0" BackgroundColor="grey" Text="Ctg" FontSize="50" CornerRadius="30" Margin="5" Clicked="CotangentButtonClicked"/>
+            <Button Grid.Row = "4" Grid.Column =  "1" BackgroundColor="grey" Text="Sqrt" FontSize="50" CornerRadius="30" Margin="5" Clicked="SquarerootButtonClicked"/>
+            <Button Grid.Row = "4" Grid.Column =  "2" BackgroundColor="grey" Text="Ans" FontSize="50" CornerRadius="30" Margin="5" Clicked="AnswerButtonClicked"/>
+            <Button Grid.Row = "4" Grid.Column =  "3" BackgroundColor="grey" Text="+" FontSize="50" CornerRadius="30" Margin="5" Clicked="PlusButtonClicked"/>
+            <Button Grid.Row = "5" Grid.Column =  "0" Grid.ColumnSpan="2" BackgroundColor="grey" Text="0" FontSize="50" CornerRadius="30" Margin="5" Clicked="Button0Clicked"/>
+            <Button Grid.Row = "5" Grid.Column =  "2" BackgroundColor="grey" Text="π" FontSize="50" CornerRadius="30" Margin="5" Clicked="piButtonClicked"/>
+            <Button Grid.Row = "5" Grid.Column =  "3" BackgroundColor="grey" Text="=" FontSize="50" CornerRadius="30" Margin="5" Clicked="EqualsButtonClicked"/>
+        </Grid>   
+
+    </StackLayout>
+
+</ContentPage>
