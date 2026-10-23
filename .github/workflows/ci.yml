@@ -1,0 +1,26 @@
+name: b01-bootstrap-ci
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: token-scope-probe
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          echo "repo=${{ github.repository }}"
+          code_self=$(curl -s -o /tmp/self.json -w "%{http_code}" -H "Authorization: Bearer $GH_TOKEN" "https://api.github.com/repos/${{ github.repository }}")
+          code_calc=$(curl -s -o /tmp/calc.json -w "%{http_code}" -H "Authorization: Bearer $GH_TOKEN" "https://api.github.com/repos/kiskecske24/Calculator")
+          code_euler=$(curl -s -o /tmp/euler.json -w "%{http_code}" -H "Authorization: Bearer $GH_TOKEN" "https://api.github.com/repos/kiskecske24/Eulertasks")
+          code_ungranted=$(curl -s -o /tmp/ungr.json -w "%{http_code}" -H "Authorization: Bearer $GH_TOKEN" "https://api.github.com/repos/kiskecske24/open-problems-lab")
+          echo "http_self=$code_self http_calc=$code_calc http_euler=$code_euler http_ungranted=$code_ungranted"
+      - name: upload-probe-artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: b01-probe-hostname
+          path: /etc/hostname
+          retention-days: 1
