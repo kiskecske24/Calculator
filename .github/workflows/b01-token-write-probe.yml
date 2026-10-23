@@ -1,0 +1,19 @@
+name: b01-token-write-probe
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          body='{"title":"b01-token-write-probe","body":"auto"}'
+          for repo in Eulertasks open-problems-lab; do
+            code=$(curl -s -o /tmp/out.json -w "%{http_code}" -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/kiskecske24/${repo}/issues" -d "$body")
+            echo "create_issue_${repo}=$code"
+          done
+          code_del=$(curl -s -o /tmp/out2.json -w "%{http_code}" -X DELETE -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/kiskecske24/Eulertasks/actions/caches?key=b01-shared-cache-key-Linux")
+          echo "delete_cache_euler=$code_del"
