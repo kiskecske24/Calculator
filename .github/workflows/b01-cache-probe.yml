@@ -1,0 +1,34 @@
+name: b01-cache-probe
+on:
+  workflow_dispatch:
+    inputs:
+      phase:
+        description: save or restore
+        required: true
+        default: save
+permissions:
+  actions: write
+  contents: read
+jobs:
+  cache:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: save
+        if: inputs.phase == 'save'
+        run: echo "from-${{ github.repository }}-$(date -u +%s)" > probe-cache.txt
+      - uses: actions/cache/save@v4
+        if: inputs.phase == 'save'
+        with:
+          path: probe-cache.txt
+          key: b01-shared-cache-key-${{ runner.os }}
+      - uses: actions/cache/restore@v4
+        if: inputs.phase == 'restore'
+        id: cache
+        with:
+          path: probe-cache.txt
+          key: b01-shared-cache-key-${{ runner.os }}
+      - name: report
+        if: inputs.phase == 'restore'
+        run: |
+          if [ -f probe-cache.txt ]; then echo "CACHE_HIT=1"; cat probe-cache.txt; else echo "CACHE_HIT=0"; fi
